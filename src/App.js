@@ -1,6 +1,9 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import ExploreServices from './pages/ExploreServices/ExploreServices';
 import Home from './pages/Home/Home/Home';
+import Login from './pages/Login/Login/Login';
+import Registration from './pages/Login/Registration/Registration';
 
 function App() {
   return (
@@ -13,9 +16,15 @@ function App() {
           <Route path="/home">
             <Home></Home>
           </Route>
-          {/* <Route exact path="/">
-        
-         </Route> */}
+          <Route exact path="/explore-services">
+            <ExploreServices></ExploreServices>
+          </Route>
+          <Route exact path="/login">
+            <Login></Login>
+          </Route>
+          <Route exact path="/register">
+            <Registration></Registration>
+          </Route>
         </Switch>
       </BrowserRouter>
     </div>

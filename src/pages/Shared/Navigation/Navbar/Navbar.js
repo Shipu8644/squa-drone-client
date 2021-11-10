@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     navlinks: {
         marginRight: "20px",
         display: "flex",
-        paddingBottom: "15px"
     },
     logo: {
         flexGrow: "1",
@@ -53,7 +52,7 @@ function Navbar() {
                         <Link to="/home" className={classes.link}>
                             Home
                         </Link>
-                        <Link to="/about" className={classes.link}>
+                        <Link to="/explore-services" className={classes.link}>
                             Explore Services
                         </Link>
                         <Link to="/about" className={classes.link}>
