@@ -7,7 +7,6 @@ import banner from '../../../images/banner.jpg';
 const homeBanner = {
     background: `url(${banner})`,
     height: "500px",
-    width: '100%',
     backgroundColor: 'rgba(45, 58, 74, 0.7)',
     backgroundBlendMode: 'darken, luminosity',
 }
@@ -25,7 +24,7 @@ const Banner = () => {
                         }}
                     >
                         <Box>
-                            <Typography sx={{ fontWeight: 'bold', fontSize: '70px' }} variant="h1">
+                            <Typography sx={{ fontWeight: 'bold', fontSize: '60px' }} variant="h3">
                                 Get Your <span style={{ textDecoration: 'underline' }}>Drone</span>
                             </Typography>
                             <Typography sx={{ py: 3 }}>

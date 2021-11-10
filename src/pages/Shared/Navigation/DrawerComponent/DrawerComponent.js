@@ -54,7 +54,7 @@ function DrawerComponent() {
                 </List>
             </Drawer>
             <IconButton onClick={() => setOpenDrawer(!openDrawer)} className={classes.icon}>
-                <MenuIcon style={{}}></MenuIcon>
+                <MenuIcon style={{ color: 'black' }}></MenuIcon>
             </IconButton>
         </>
     );
