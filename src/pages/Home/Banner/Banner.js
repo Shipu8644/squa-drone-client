@@ -9,6 +9,7 @@ const homeBanner = {
     height: "500px",
     backgroundColor: 'rgba(45, 58, 74, 0.7)',
     backgroundBlendMode: 'darken, luminosity',
+    marginTop: "10px"
 }
 const Banner = () => {
     return (
