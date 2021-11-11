@@ -6,6 +6,7 @@ import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
 import Registration from './pages/Login/Registration/Registration';
 import NotFound from './pages/NotFound/NotFound';
+import Purchase from './pages/Purchase/Purchase';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <Route exact path="/register">
               <Registration></Registration>
+            </Route>
+            <Route exact path="/purchase">
+              <Purchase></Purchase>
             </Route>
             <Route exact path="*">
               <NotFound></NotFound>

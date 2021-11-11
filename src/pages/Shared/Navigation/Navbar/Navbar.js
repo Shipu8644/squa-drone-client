@@ -13,11 +13,8 @@ import { Link } from "react-router-dom";
 import DrawerComponent from "../DrawerComponent/DrawerComponent";
 import { makeStyles } from '@mui/styles';
 import logoBlack from '../../../../images/logo-black.png'
-import useFirebase from "../../../../hooks/useFirebase";
-import { Box, display } from "@mui/system";
+import { Box } from "@mui/system";
 import useAuth from "../../../../hooks/useAuth";
-
-
 
 const useStyles = makeStyles((theme) => ({
     navlinks: {
