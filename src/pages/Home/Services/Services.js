@@ -12,7 +12,7 @@ const Services = () => {
     }, [])
     return (
         <Container sx={{ flexGrow: 1, my: 3 }}>
-            <Typography sx={{ my: 3, fontWeight: 'bold' }} variant='h4'> Services</Typography>
+            <Typography sx={{ my: 3, fontWeight: 'bold' }} variant='h4'> Products</Typography>
             <Grid container spacing={3}>
                 {services.slice(0, 6).map(service => <Service
                     key={service._id}

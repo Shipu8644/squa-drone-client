@@ -56,7 +56,7 @@ function Navbar() {
                             Home
                         </Link>
                         <Link to="/explore-services" className={classes.link}>
-                            Explore Services
+                            Explore Products
                         </Link>
                         <Link to="/about" className={classes.link}>
                             Our Team
