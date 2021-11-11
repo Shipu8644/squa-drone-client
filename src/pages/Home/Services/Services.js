@@ -15,6 +15,7 @@ const Services = () => {
             <Typography sx={{ my: 3, fontWeight: 'bold' }} variant='h4'> Services</Typography>
             <Grid container spacing={3}>
                 {services.slice(0, 6).map(service => <Service
+                    key={service._id}
                     service={service}
                 ></Service>)}
             </Grid>

@@ -1,21 +1,45 @@
 import { Button, TextField, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Navbar from '../../Shared/Navigation/Navbar/Navbar';
-
+import { useLocation, useHistory } from 'react-router';
+import useAuth from '../../../hooks/useAuth';
 const Login = () => {
+    const [loginData, setLoginData] = useState({});
+    const location = useLocation();
+    const history = useHistory();
+    const { loginUser, signinWithGoogle } = useAuth();
+    const handleOnBlur = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData };
+        newLoginData[field] = value;
+        setLoginData(newLoginData);
+
+    }
+
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
+        loginUser(loginData.email, loginData.password, location, history);
+    }
+
+    const handleGoogleSignIn = () => {
+        signinWithGoogle(location, history);
+    }
     return (
         <div>
             <Navbar></Navbar>
             <Typography sx={{ mt: 5 }} variant="h5" gutterBottom>Login Here</Typography>
-            <form >
+            <form onSubmit={handleLoginSubmit}>
                 <TextField
+                    onBlur={handleOnBlur}
                     sx={{ width: '50%', m: 1 }}
                     id="standard-basic"
                     label="Your Email"
                     name="email"
                     variant="standard" />
                 <TextField
+                    onBlur={handleOnBlur}
                     sx={{ width: '50%', m: 1 }}
                     id="standard-basic"
                     label="Your Password"
@@ -34,7 +58,7 @@ const Login = () => {
                 </NavLink>
             </form>
             <p>------------------------</p>
-            <Button style={{ backgroundColor: '#01b1ec' }} variant="contained">Google Sign In</Button>
+            <Button onClick={handleGoogleSignIn} style={{ backgroundColor: '#01b1ec' }} variant="contained">Google Sign In</Button>
 
         </div>
     );

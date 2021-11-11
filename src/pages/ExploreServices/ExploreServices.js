@@ -18,6 +18,7 @@ const ExploreServices = () => {
                 <Typography sx={{ my: 3, fontWeight: 'bold' }} variant='h4'> Services</Typography>
                 <Grid container spacing={3}>
                     {services.map(service => <ExploreService
+                        key={service._id}
                         service={service}
                     ></ExploreService>)}
                 </Grid>

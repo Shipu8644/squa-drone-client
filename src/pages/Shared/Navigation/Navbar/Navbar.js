@@ -6,12 +6,17 @@ import {
     Typography,
     useTheme,
     useMediaQuery,
+    Button,
 } from "@mui/material";
 import './Navbar.css';
 import { Link } from "react-router-dom";
 import DrawerComponent from "../DrawerComponent/DrawerComponent";
 import { makeStyles } from '@mui/styles';
 import logoBlack from '../../../../images/logo-black.png'
+import useFirebase from "../../../../hooks/useFirebase";
+import { Box, display } from "@mui/system";
+import useAuth from "../../../../hooks/useAuth";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Navbar() {
+    const { user, logout } = useAuth();
     const classes = useStyles();
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -58,10 +64,17 @@ function Navbar() {
                         <Link to="/about" className={classes.link}>
                             Our Team
                         </Link>
-                        <Link to="/login" style={{ backgroundColor: '#01b1ec', color: 'white', padding: "2px 40px", borderRadius: "5px" }} className={classes.link}>
+                        {!user.email ? <Link to="/login" style={{ backgroundColor: '#01b1ec', color: 'white', padding: "2px 40px", borderRadius: "5px" }} className={classes.link}>
                             Login
-                        </Link>
+                        </Link> :
+                            <Box>
+                                <Link onClick={logout} to="/login" style={{ backgroundColor: '#01b1ec', color: 'white', padding: "2px 40px", borderRadius: "5px" }} className={classes.link}>
+                                    Logout
+                                </Link>
+                                <span style={{ color: 'red', marginLeft: '5px' }} >Sign in as: {user.displayName}</span>
+                            </Box>
 
+                        }
                     </div>
                 )}
             </Toolbar>
