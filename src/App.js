@@ -4,6 +4,7 @@ import AuthProvider from './contexts/AuthProvider';
 import ExploreServices from './pages/ExploreServices/ExploreServices';
 import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
+import PrivateRoute from './pages/Login/PriivateRoute/PrivateRoute';
 import Registration from './pages/Login/Registration/Registration';
 import NotFound from './pages/NotFound/NotFound';
 import Purchase from './pages/Purchase/Purchase';
@@ -29,9 +30,9 @@ function App() {
             <Route exact path="/register">
               <Registration></Registration>
             </Route>
-            <Route exact path="/purchase">
+            <PrivateRoute exact path="/purchase/:id">
               <Purchase></Purchase>
-            </Route>
+            </PrivateRoute>
             <Route exact path="*">
               <NotFound></NotFound>
             </Route>
