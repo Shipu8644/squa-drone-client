@@ -35,6 +35,7 @@ const Purchase = () => {
         const orders = {
             serviceName: service.name,
             price: service.price,
+            img: service.img,
             name: user.displayName,
             email: user.email,
             status: 'pending',

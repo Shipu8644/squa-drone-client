@@ -58,9 +58,7 @@ function Navbar() {
                         <Link to="/explore-services" className={classes.link}>
                             Explore Products
                         </Link>
-                        <Link to="/about" className={classes.link}>
-                            Our Team
-                        </Link>
+
                         <Link to="/dashboard" className={classes.link}>
                             Dashboard
                         </Link>
