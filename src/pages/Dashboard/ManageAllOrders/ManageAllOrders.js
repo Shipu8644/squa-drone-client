@@ -51,6 +51,23 @@ const ManageAllOrders = () => {
         console.log(id, status);
     }
 
+    const handleDelete = (id) => {
+        const proceed = window.confirm("Are You Sure to delete the selected item?")
+        if (proceed) {
+            fetch(`http://localhost:5000/orders/${id}`, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        const remainingOrders = orders.filter(order => order._id !== id);
+                        setOrders(remainingOrders);
+
+                    }
+                })
+        }
+    }
+
     return (
         <Container>
             <Typography sx={{ fontFamily: 'monospace', fontWeight: 'bold' }} variant="h4">All Orders List</Typography>
@@ -63,6 +80,7 @@ const ManageAllOrders = () => {
                             <StyledTableCell align="left">Service Name</StyledTableCell>
                             <StyledTableCell align="left">Phone</StyledTableCell>
                             <StyledTableCell align="left">Address</StyledTableCell>
+                            <StyledTableCell align="left">Date</StyledTableCell>
                             <StyledTableCell align="left">Status</StyledTableCell>
                             <StyledTableCell align="left">Action </StyledTableCell>
                         </TableRow>
@@ -77,6 +95,7 @@ const ManageAllOrders = () => {
                                 <StyledTableCell align="left">{row.serviceName}</StyledTableCell>
                                 <StyledTableCell align="left">{row.phone}</StyledTableCell>
                                 <StyledTableCell align="left">{row.address}</StyledTableCell>
+                                <StyledTableCell align="left">{row.date}</StyledTableCell>
                                 <StyledTableCell align="left">
                                     <Box sx={{ minWidth: 120 }}>
                                         <FormControl fullWidth>
@@ -95,7 +114,7 @@ const ManageAllOrders = () => {
 
                                 <StyledTableCell align="left">
                                     <Tooltip title="Delete">
-                                        <BackspaceIcon sx={{
+                                        <BackspaceIcon onClick={() => handleDelete(row._id)} sx={{
                                             cursor: 'pointer',
                                             mt: 1,
                                             color: "red",
