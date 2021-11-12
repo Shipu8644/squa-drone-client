@@ -1,4 +1,4 @@
-import { Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Button, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Navbar from '../Shared/Navigation/Navbar/Navbar';
@@ -6,12 +6,15 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Box } from '@mui/system';
 import useAuth from '../../hooks/useAuth';
+import axios from 'axios';
 
 const Purchase = () => {
     const { user } = useAuth();
     const { id } = useParams();
+    const date = new Date();
     const [service, setService] = useState({});
-    const [order, setOrder] = useState({})
+    const [order, setOrder] = useState({});
+    const [success, setSuccess] = useState(false);
     useEffect(() => {
         fetch(`http://localhost:5000/services/${id}`)
             .then(res => res.json())
@@ -30,12 +33,23 @@ const Purchase = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const orders = {
-            ...order,
             serviceName: service.name,
             price: service.price,
-
+            name: user.displayName,
+            email: user.email,
+            status: 'pending',
+            date: date.toLocaleDateString(),
+            ...order,
         }
-        console.log(orders)
+
+        axios.post("http://localhost:5000/orders", orders)
+            .then(res => {
+                if (res.data.insertedId) {
+                    setSuccess(true)
+                    e.target.reset();
+                }
+            })
+
     }
 
     return (
@@ -48,6 +62,7 @@ const Purchase = () => {
                             <CardContent>
                                 <img style={{ width: "430px" }} src={service.img} alt="" />
                             </CardContent>
+                            {success && <Alert severity="success">Placing  Order Successfully!!! Congrats</Alert>}
                         </Card>
                     </Grid>
                     <Grid item xs={12} md={6}
@@ -109,6 +124,16 @@ const Purchase = () => {
                                     hiddenLabel
                                     name="address"
                                     placeholder="Enter Address"
+                                    variant="filled"
+                                    size="small"
+                                />
+                                <br />
+                                <TextField
+                                    sx={{ width: '50%', mb: 2 }}
+                                    disabled
+                                    hiddenLabel
+                                    id="filled-hidden-label-small"
+                                    defaultValue={date.toLocaleDateString()}
                                     variant="filled"
                                     size="small"
                                 />
