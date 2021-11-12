@@ -61,6 +61,9 @@ function Navbar() {
                         <Link to="/about" className={classes.link}>
                             Our Team
                         </Link>
+                        <Link to="/dashboard" className={classes.link}>
+                            Dashboard
+                        </Link>
                         {!user.email ? <Link to="/login" style={{ backgroundColor: '#01b1ec', color: 'white', padding: "2px 40px", borderRadius: "5px" }} className={classes.link}>
                             Login
                         </Link> :

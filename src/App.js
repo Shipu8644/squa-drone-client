@@ -1,6 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './contexts/AuthProvider';
+import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import ExploreServices from './pages/ExploreServices/ExploreServices';
 import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
@@ -21,19 +22,22 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-            <Route exact path="/explore-services">
+            <Route path="/explore-services">
               <ExploreServices></ExploreServices>
             </Route>
-            <Route exact path="/login">
+            <Route path="/login">
               <Login></Login>
             </Route>
-            <Route exact path="/register">
+            <Route path="/register">
               <Registration></Registration>
             </Route>
-            <PrivateRoute exact path="/purchase/:id">
+            <PrivateRoute path="/purchase/:id">
               <Purchase></Purchase>
             </PrivateRoute>
-            <Route exact path="*">
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            <Route path="*">
               <NotFound></NotFound>
             </Route>
           </Switch>
