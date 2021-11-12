@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         color: "black",
         fontSize: "18px",
         marginLeft: "80px",
-        fontFamily: ""
+        fontFamily: 'monospace'
     },
 }));
 

@@ -15,6 +15,7 @@ const Registration = () => {
         const value = e.target.value;
         const newRegistrationData = { ...registrationData };
         newRegistrationData[field] = value;
+        console.log(newRegistrationData);
         setRegistrationData(newRegistrationData);
     }
 

@@ -46,6 +46,7 @@ const ManageAllOrders = () => {
 
     const handleChange = e => {
         setStatus(e.target.value);
+        console.log(status);
     }
     const manageStatus = (id) => {
         console.log(id, status);
