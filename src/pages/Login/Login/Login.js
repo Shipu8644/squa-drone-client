@@ -30,7 +30,7 @@ const Login = () => {
         <div>
             <Navbar></Navbar>
             <Typography sx={{ mt: 5 }} variant="h5" gutterBottom>Login Here</Typography>
-            <form onSubmit={handleLoginSubmit}>
+            {!isLoading && <form onSubmit={handleLoginSubmit}>
                 <TextField
                     required
                     onBlur={handleOnBlur}
@@ -58,10 +58,10 @@ const Login = () => {
                     to="/register">
                     <Button variant="text">New User? Please Register</Button>
                 </NavLink>
-                {isLoading && <CircularProgress />}
-                {user?.email && <Alert severity="success">Login Successful</Alert>}
-                {authError && <Alert sx={{ textAlign: 'center' }} severity="error">{authError}</Alert>}
-            </form>
+            </form>}
+            {isLoading && <CircularProgress />}
+            {user?.email && <Alert severity="success">Login Successful</Alert>}
+            {authError && <Alert sx={{ textAlign: 'center' }} severity="error">{authError}</Alert>}
 
             <p>------------------------</p>
             <Button onClick={handleGoogleSignIn} style={{ backgroundColor: '#01b1ec' }} variant="contained">Google Sign In</Button>
