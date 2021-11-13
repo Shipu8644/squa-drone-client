@@ -25,7 +25,7 @@ const Registration = () => {
             alert("Your password didn't match");
             return;
         }
-        console.log(registrationData);
+        // console.log(registrationData);
 
         registerUser(registrationData.email, registrationData.password, registrationData.name, history);
 

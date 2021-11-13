@@ -9,7 +9,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
-
+    const [admin, setAdmin] = useState(false);
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
 
@@ -21,7 +21,10 @@ const useFirebase = () => {
                 const newUser = { email, displayName: name }
 
                 setUser(newUser)
+                //save user to the database
+                saveUser(email, name, "POST");
 
+                // Send name to firebase after Creation
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
@@ -58,6 +61,7 @@ const useFirebase = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user;
+                saveUser(user.email, user.displayName, "PUT");
                 const destination = location?.state?.from || '/';
                 history.push(destination);
             }).catch((error) => {
@@ -78,7 +82,6 @@ const useFirebase = () => {
         return () => unsubscribe;
     }, [auth])
 
-
     const logout = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
@@ -87,6 +90,30 @@ const useFirebase = () => {
         });
     }
 
+    const saveUser = (email, name, method) => {
+        const user = {
+            email,
+            displayName: name
+        }
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+
+    }
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+        console.log(admin);
+    }, [user.email, admin])
+
+
+
     return {
         user,
         isLoading,
@@ -94,6 +121,7 @@ const useFirebase = () => {
         registerUser,
         loginUser,
         signinWithGoogle,
+        admin,
         logout
 
     }

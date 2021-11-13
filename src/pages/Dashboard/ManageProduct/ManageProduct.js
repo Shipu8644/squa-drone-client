@@ -35,11 +35,11 @@ const ManageProduct = ({ product }) => {
     };
     return (
         <Grid item xs={12} md={4}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 345, p: 2, boxShadow: 2, m: 2 }}>
                 <CardHeader
                     avatar={
-                        <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                            R
+                        <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" >
+                            {name.slice(0, 1)}
                         </Avatar>
                     }
                     action={

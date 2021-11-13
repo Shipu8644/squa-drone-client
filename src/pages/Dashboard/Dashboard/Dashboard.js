@@ -28,11 +28,13 @@ import ManageAllOrders from '../ManageAllOrders/ManageAllOrders';
 import AddProduct from '../AddProduct/AddProduct';
 import ManageProducts from '../ManageProducts/ManageProducts';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import AdminDashboard from '../AdminDashboard/AdminDashboard';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
-    const { logout } = useAuth();
+    const { logout, admin } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
@@ -53,6 +55,7 @@ function Dashboard(props) {
                 pt: 4
 
             }}>
+                {/* Common for Admin and users */}
                 <Link style={{ textDecoration: 'none' }} to="/explore-services" >
                     <Button sx={{}} variant="text"> Explore Products</Button>
                 </Link>
@@ -63,7 +66,7 @@ function Dashboard(props) {
                 <br />
 
                 {/* only for users */}
-                <Box>
+                {!admin && <Box>
 
                     <Link style={{ textDecoration: 'none' }} to={`${url}/myOrders`} >
                         <Button sx={{}} variant="text">My Orders</Button>
@@ -79,10 +82,10 @@ function Dashboard(props) {
                         <Button sx={{}} variant="text"> Pay Order</Button>
                     </Link>
                     <br />
-                </Box>
+                </Box>}
 
                 {/* Only For Admin */}
-                <Box>
+                {admin && <Box>
                     <Link style={{ textDecoration: 'none' }} to={`${url}/manageOrders`} >
                         <Button sx={{}} variant="text"> Manage Orders</Button>
                     </Link>
@@ -101,7 +104,7 @@ function Dashboard(props) {
                         <Button sx={{}} variant="text">Make Admin</Button>
                     </Link>
                     <br />
-                </Box>
+                </Box>}
 
                 <Link onClick={logout} style={{ textDecoration: 'none' }} to="/login" >
                     <Button sx={{}} variant="text"> Logout</Button>
@@ -179,7 +182,10 @@ function Dashboard(props) {
                 <Toolbar />
                 <Switch>
                     <Route exact path={path}>
-                        <DashboardHome></DashboardHome>
+                        {!admin ? <DashboardHome></DashboardHome>
+                            :
+                            <AdminDashboard></AdminDashboard>
+                        }
                     </Route>
                     <Route exact path={`${path}/myOrders`}>
                         <MyOrders></MyOrders>
@@ -190,18 +196,18 @@ function Dashboard(props) {
                     <Route exact path={`${path}/payOrder`}>
                         <Pay></Pay>
                     </Route>
-                    <Route exact path={`${path}/manageOrders`}>
+                    <AdminRoute exact path={`${path}/manageOrders`}>
                         <ManageAllOrders></ManageAllOrders>
-                    </Route>
-                    <Route exact path={`${path}/addProduct`}>
+                    </AdminRoute>
+                    <AdminRoute exact path={`${path}/addProduct`}>
                         <AddProduct></AddProduct>
-                    </Route>
-                    <Route exact path={`${path}/manageProducts`}>
+                    </AdminRoute>
+                    <AdminRoute exact path={`${path}/manageProducts`}>
                         <ManageProducts></ManageProducts>
-                    </Route>
-                    <Route exact path={`${path}/makeAdmin`}>
+                    </AdminRoute>
+                    <AdminRoute exact path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
-                    </Route>
+                    </AdminRoute>
                 </Switch>
 
             </Box>
