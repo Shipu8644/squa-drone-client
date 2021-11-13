@@ -6,7 +6,7 @@ import logoBlack from '../../../images/logo-black.png'
 import { useHistory } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 const Registration = () => {
-    const { registerUser, isLoading } = useAuth();
+    const { registerUser, isLoading, authError } = useAuth();
     const [registrationData, setRegistrationData] = useState({});
     const history = useHistory();
 
