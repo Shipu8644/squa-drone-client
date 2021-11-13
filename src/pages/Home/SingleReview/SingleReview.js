@@ -1,4 +1,5 @@
-import { Grid, Paper, Typography } from '@mui/material';
+import { Avatar, Grid, Paper, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import React from 'react';
 import Rating from 'react-rating'
 const SingleReview = ({ review }) => {
@@ -8,9 +9,14 @@ const SingleReview = ({ review }) => {
         <Grid item xs={12} md={4}>
 
             <Paper elevation={3} sx={{ p: 3 }}>
-                <Typography sx={{ fontFamily: 'serif' }} variant="h5">
+                <Avatar sx={{ bgcolor: 'red' }} aria-label="recipe" >
+                    {name.slice(0, 1)}
+                </Avatar>
+                <Typography sx={{ fontFamily: 'serif', mt: -5 }} variant="h5">
                     {name}
                 </Typography>
+
+
                 <Typography variant="subtitle2">
                     {designation}
                 </Typography>
