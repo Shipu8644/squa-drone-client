@@ -16,7 +16,15 @@ const MyOrder = ({ orders }) => {
                         <Typography sx={{ fontFamily: 'fantasy' }} variant="subtitle2" gutterBottom component="div">
                             ${price}
                         </Typography>
-                        <Typography variant="button" display="block" gutterBottom>
+                        <Typography style={{
+                            backgroundColor: (
+                                (status === 'pending' && 'blue') ||
+                                (status === 'rejected' && 'red') ||
+                                (status === 'shipped' && 'green')
+                            ),
+                            color: 'white'
+
+                        }} variant="button" display="block" gutterBottom>
                             {status}
                         </Typography>
                         <Typography variant="body1" color="text.secondary" component="div">

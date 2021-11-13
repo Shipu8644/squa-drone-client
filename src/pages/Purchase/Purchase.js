@@ -61,7 +61,7 @@ const Purchase = () => {
                     <Grid item xs={12} md={6}>
                         <Card sx={{ boxShadow: 2 }}>
                             <CardContent>
-                                <img style={{ width: "430px" }} src={service.img} alt="" />
+                                <img style={{ width: "400px" }} src={service.img} alt="" />
                             </CardContent>
                             {success && <Alert severity="success">Placing  Order Successfully!!! Congrats</Alert>}
                         </Card>
