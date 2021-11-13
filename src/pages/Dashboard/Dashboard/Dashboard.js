@@ -38,6 +38,10 @@ import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantity
 import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ExploreIcon from '@mui/icons-material/Explore';
+import BookIcon from '@mui/icons-material/Book';
+import AddCommentIcon from '@mui/icons-material/AddComment';
+import PaymentsIcon from '@mui/icons-material/Payments';
+
 const drawerWidth = 240;
 
 function Dashboard(props) {
@@ -84,17 +88,20 @@ function Dashboard(props) {
                         fontWeight: "bold",
                         color: "red"
                     }} style={{ textDecoration: 'none' }} to={`${url}/myOrders`} >
-                        <Button sx={{}} variant="text">My Orders</Button>
+                        <BookIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></BookIcon>
+                        <Button sx={{ mt: -4 }} variant="text">My Orders</Button>
                     </NavLink>
                     <br />
 
                     <NavLink style={{ textDecoration: 'none' }} to={`${url}/addReview`} >
-                        <Button sx={{}} variant="text">Add Review</Button>
+                        <AddCommentIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></AddCommentIcon>
+                        <Button sx={{ mt: -4 }} variant="text">Add Review</Button>
                     </NavLink>
                     <br />
 
                     <NavLink style={{ textDecoration: 'none' }} to={`${url}/payOrder`} >
-                        <Button sx={{}} variant="text"> Pay Order</Button>
+                        <PaymentsIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></PaymentsIcon>
+                        <Button sx={{ mt: -4 }} variant="text"> Pay Order</Button>
                     </NavLink>
                     <br />
                 </Box>}

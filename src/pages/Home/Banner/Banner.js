@@ -26,7 +26,7 @@ const Banner = () => {
                     >
                         <Box>
                             <Typography sx={{ fontWeight: 'bold', fontSize: '60px' }} variant="h3">
-                                Get Your <span style={{ textDecoration: 'underline' }}>Drone</span>
+                                Get Your <span style={{ textDecoration: 'underline' }}>Drone </span>
                             </Typography>
                             <Typography sx={{ py: 3 }}>
                                 If you’re buying a drone for the first time, you may want to consider the features, flight time, camera resolution, accessories and easy of use.
