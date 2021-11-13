@@ -15,9 +15,9 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     useParams,
-    useRouteMatch
+    useRouteMatch,
+    NavLink
 } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth';
 import MyOrders from '../MyOrders/MyOrders';
@@ -30,7 +30,14 @@ import ManageProducts from '../ManageProducts/ManageProducts';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import AdminDashboard from '../AdminDashboard/AdminDashboard';
-
+import logoBlack from '../../../images/logo-black.png';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import AddIcon from '@mui/icons-material/Add';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import ExploreIcon from '@mui/icons-material/Explore';
 const drawerWidth = 240;
 
 function Dashboard(props) {
@@ -46,69 +53,82 @@ function Dashboard(props) {
 
     const drawer = (
         <div >
-            <Toolbar />
-            <Typography>Will insert logo</Typography>
+            <img style={{ width: '70%' }} src={logoBlack} alt="" />
+            <Toolbar sx={{ mt: -8 }} />
             <Divider />
             <Box sx={{
                 textAlign: 'left',
                 pl: 4,
-                pt: 4
+                pt: 2
 
             }}>
                 {/* Common for Admin and users */}
-                <Link style={{ textDecoration: 'none' }} to="/explore-services" >
-                    <Button sx={{}} variant="text"> Explore Products</Button>
-                </Link>
-
-                <Link style={{ textDecoration: 'none' }} to={`${url}`} >
-                    <Button sx={{}} variant="text"> Dashboard</Button>
-                </Link>
+                <NavLink style={{ textDecoration: 'none' }} to="/explore-services" >
+                    <ExploreIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></ExploreIcon>
+                    <Button sx={{ mt: -4 }} variant="text"> Explore Products</Button>
+                </NavLink>
+                <br />
+                <NavLink activeStyle={{
+                    fontWeight: "bold",
+                    color: "red"
+                }} style={{ textDecoration: 'none' }} to={`${url}`} >
+                    <AdminPanelSettingsIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></AdminPanelSettingsIcon>
+                    <Button sx={{ mt: -4 }} variant="text"> Dashboard</Button>
+                </NavLink>
                 <br />
 
                 {/* only for users */}
                 {!admin && <Box>
 
-                    <Link style={{ textDecoration: 'none' }} to={`${url}/myOrders`} >
+                    <NavLink activeStyle={{
+                        fontWeight: "bold",
+                        color: "red"
+                    }} style={{ textDecoration: 'none' }} to={`${url}/myOrders`} >
                         <Button sx={{}} variant="text">My Orders</Button>
-                    </Link>
+                    </NavLink>
                     <br />
 
-                    <Link style={{ textDecoration: 'none' }} to={`${url}/addReview`} >
+                    <NavLink style={{ textDecoration: 'none' }} to={`${url}/addReview`} >
                         <Button sx={{}} variant="text">Add Review</Button>
-                    </Link>
+                    </NavLink>
                     <br />
 
-                    <Link style={{ textDecoration: 'none' }} to={`${url}/payOrder`} >
+                    <NavLink style={{ textDecoration: 'none' }} to={`${url}/payOrder`} >
                         <Button sx={{}} variant="text"> Pay Order</Button>
-                    </Link>
+                    </NavLink>
                     <br />
                 </Box>}
 
                 {/* Only For Admin */}
                 {admin && <Box>
-                    <Link style={{ textDecoration: 'none' }} to={`${url}/manageOrders`} >
-                        <Button sx={{}} variant="text"> Manage Orders</Button>
-                    </Link>
+                    <NavLink style={{ textDecoration: 'none' }} to={`${url}/manageOrders`} >
+                        <ManageAccountsIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></ManageAccountsIcon>
+                        <Button sx={{ mt: -4 }} variant="text"> Manage Orders</Button>
+                    </NavLink>
                     <br />
 
-                    <Link style={{ textDecoration: 'none' }} to={`${url}/addProduct`} >
-                        <Button sx={{}} variant="text">Add Product</Button>
-                    </Link>
+                    <NavLink style={{ textDecoration: 'none' }} to={`${url}/addProduct`} >
+                        <AddIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></AddIcon>
+                        <Button sx={{ mt: -4 }} variant="text">Add Product</Button>
+                    </NavLink>
                     <br />
 
-                    <Link style={{ textDecoration: 'none' }} to={`${url}/manageProducts`} >
-                        <Button sx={{}} variant="text">Manage Products</Button>
-                    </Link>
+                    <NavLink style={{ textDecoration: 'none' }} to={`${url}/manageProducts`} >
+                        <ProductionQuantityLimitsIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></ProductionQuantityLimitsIcon>
+                        <Button sx={{ mt: -4 }} variant="text">Manage Products</Button>
+                    </NavLink>
                     <br />
-                    <Link style={{ textDecoration: 'none' }} to={`${url}/makeAdmin`} >
-                        <Button sx={{}} variant="text">Make Admin</Button>
-                    </Link>
+                    <NavLink style={{ textDecoration: 'none' }} to={`${url}/makeAdmin`} >
+                        <AdminPanelSettingsTwoToneIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></AdminPanelSettingsTwoToneIcon>
+                        <Button sx={{ mt: -4 }} variant="text">Make Admin</Button>
+                    </NavLink>
                     <br />
                 </Box>}
 
-                <Link onClick={logout} style={{ textDecoration: 'none' }} to="/login" >
-                    <Button sx={{}} variant="text"> Logout</Button>
-                </Link>
+                <NavLink onClick={logout} style={{ textDecoration: 'none' }} to="/login" >
+                    <ExitToAppIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></ExitToAppIcon>
+                    <Button sx={{ mt: -4 }} variant="text"> Logout</Button>
+                </NavLink>
             </Box>
 
 

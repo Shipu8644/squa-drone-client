@@ -9,7 +9,7 @@ import {
     Button,
 } from "@mui/material";
 import './Navbar.css';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import DrawerComponent from "../DrawerComponent/DrawerComponent";
 import { makeStyles } from '@mui/styles';
 import logoBlack from '../../../../images/logo-black.png'
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     navlinks: {
         marginRight: "20px",
         display: "flex",
+
     },
     logo: {
         flexGrow: "1",
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "80px",
         fontFamily: 'monospace'
     },
+
 }));
 
 function Navbar() {
@@ -41,7 +43,7 @@ function Navbar() {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     return (
-        <AppBar position="static" style={{ backgroundColor: 'white' }}>
+        <AppBar position="sticky" style={{ backgroundColor: 'white' }}>
             <CssBaseline />
             <Toolbar>
                 <Typography variant="h4" className={classes.logo}>
@@ -52,23 +54,42 @@ function Navbar() {
                     <DrawerComponent />
                 ) : (
                     <div className={classes.navlinks}>
-                        <Link to="/home" className={classes.link}>
+                        <NavLink activeStyle={{
+                            fontWeight: "bold",
+                            color: "red",
+                            textDecoration: 'underline'
+                        }} to="/home" className={classes.link}>
                             Home
-                        </Link>
-                        <Link to="/explore-services" className={classes.link}>
+                        </NavLink>
+                        <NavLink
+                            activeStyle={{
+                                fontWeight: "bold",
+                                color: "red",
+                                textDecoration: 'underline'
+                            }}
+                            to="/explore-services" className={classes.link}>
                             Explore Products
-                        </Link>
+                        </NavLink>
 
-                        <Link to="/dashboard" className={classes.link}>
+                        <NavLink activeStyle={{
+                            fontWeight: "bold",
+                            color: "red",
+                            textDecoration: 'underline'
+                        }}
+                            to="/dashboard" className={classes.link}>
                             Dashboard
-                        </Link>
-                        {!user.email ? <Link to="/login" style={{ backgroundColor: '#01b1ec', color: 'white', padding: "2px 40px", borderRadius: "5px" }} className={classes.link}>
+                        </NavLink>
+                        {!user.email ? <NavLink activeStyle={{
+                            fontWeight: "bold",
+                            color: "red",
+                            textDecoration: 'underline'
+                        }} to="/login" style={{ backgroundColor: '#01b1ec', color: 'white', padding: "2px 40px", borderRadius: "5px" }} className={classes.link}>
                             Login
-                        </Link> :
+                        </NavLink> :
                             <Box>
-                                <Link onClick={logout} to="/login" style={{ backgroundColor: '#01b1ec', color: 'white', padding: "2px 40px", borderRadius: "5px" }} className={classes.link}>
+                                <NavLink onClick={logout} to="/login" style={{ backgroundColor: '#01b1ec', color: 'white', padding: "2px 40px", borderRadius: "5px" }} className={classes.link}>
                                     Logout
-                                </Link>
+                                </NavLink>
                                 <span style={{ color: 'red', marginLeft: '5px' }} >Sign in as: {user.displayName}</span>
                             </Box>
 

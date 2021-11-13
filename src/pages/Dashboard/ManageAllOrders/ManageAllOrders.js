@@ -71,7 +71,7 @@ const ManageAllOrders = () => {
 
     return (
         <Container>
-            <Typography sx={{ fontFamily: 'monospace', fontWeight: 'bold' }} variant="h4">All Orders List</Typography>
+            <Typography sx={{ fontFamily: 'monospace', fontWeight: 'bold', my: 3 }} variant="h4">All Orders List</Typography>
             <TableContainer component={Paper}>
                 <Table aria-label="customized table">
                     <TableHead>
