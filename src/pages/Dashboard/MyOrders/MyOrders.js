@@ -29,7 +29,7 @@ const MyOrders = () => {
                 <Alert severity="info" sx={{ mt: 5 }}>
                     <AlertTitle>info</AlertTitle>
                     You haven't order anything — <strong>check out Explore Products for making order please!</strong>
-                    <Link to='/explore-services' style={{ textDecoration: 'none' }}> <Button variant="contained">Explore Products</Button></Link>
+                    <Link to='/explore-services' style={{ textDecoration: 'none', padding: 2 }}> <Button variant="contained">Explore Products</Button></Link>
                 </Alert>
             }
         </Container>

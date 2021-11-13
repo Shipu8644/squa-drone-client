@@ -6,7 +6,7 @@ import logoBlack from '../../../images/logo-black.png'
 import { useHistory } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 const Registration = () => {
-    const { registerUser, isLoading, authError } = useAuth();
+    const { registerUser, isLoading, authError, user } = useAuth();
     const [registrationData, setRegistrationData] = useState({});
     const history = useHistory();
 
@@ -40,6 +40,7 @@ const Registration = () => {
                     {!isLoading &&
                         <form onSubmit={handleSubmit}>
                             <TextField
+                                required
                                 onBlur={handleOnBlur}
                                 sx={{ width: '75%', m: 1 }}
                                 id="standard-basic"
@@ -47,6 +48,7 @@ const Registration = () => {
                                 name="name"
                                 variant="standard" />
                             <TextField
+                                required
                                 onBlur={handleOnBlur}
                                 sx={{ width: '75%', m: 1 }}
                                 id="standard-basic"
@@ -55,6 +57,7 @@ const Registration = () => {
                                 type="email"
                                 variant="standard" />
                             <TextField
+                                required
                                 onBlur={handleOnBlur}
                                 sx={{ width: '75%', m: 1 }}
                                 id="standard-basic"
@@ -63,6 +66,7 @@ const Registration = () => {
                                 name="password"
                                 variant="standard" />
                             <TextField
+                                required
                                 onBlur={handleOnBlur}
                                 sx={{ width: '75%', m: 1 }}
                                 id="standard-basic"
@@ -83,6 +87,8 @@ const Registration = () => {
                         </form>
                     }
                     {isLoading && <CircularProgress />}
+                    {user?.email && <Alert severity="success">Registration Successful</Alert>}
+                    {authError && <Alert severity="error">{authError}</Alert>}
 
                 </Grid>
                 <Grid item xs={12} md={6} sx={{ mt: 15 }}>

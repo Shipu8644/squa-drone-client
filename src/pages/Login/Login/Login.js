@@ -1,4 +1,4 @@
-import { Button, TextField, Typography } from '@mui/material';
+import { Alert, Button, CircularProgress, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Navbar from '../../Shared/Navigation/Navbar/Navbar';
@@ -8,7 +8,7 @@ const Login = () => {
     const [loginData, setLoginData] = useState({});
     const location = useLocation();
     const history = useHistory();
-    const { loginUser, signinWithGoogle } = useAuth();
+    const { loginUser, signinWithGoogle, user, isLoading, authError } = useAuth();
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -32,6 +32,7 @@ const Login = () => {
             <Typography sx={{ mt: 5 }} variant="h5" gutterBottom>Login Here</Typography>
             <form onSubmit={handleLoginSubmit}>
                 <TextField
+                    required
                     onBlur={handleOnBlur}
                     sx={{ width: '50%', m: 1 }}
                     id="standard-basic"
@@ -39,6 +40,7 @@ const Login = () => {
                     name="email"
                     variant="standard" />
                 <TextField
+                    required
                     onBlur={handleOnBlur}
                     sx={{ width: '50%', m: 1 }}
                     id="standard-basic"
@@ -56,7 +58,11 @@ const Login = () => {
                     to="/register">
                     <Button variant="text">New User? Please Register</Button>
                 </NavLink>
+                {isLoading && <CircularProgress />}
+                {user?.email && <Alert severity="success">Registration Successful</Alert>}
+                {authError && <Alert sx={{ textAlign: 'center' }} severity="error">{authError}</Alert>}
             </form>
+
             <p>------------------------</p>
             <Button onClick={handleGoogleSignIn} style={{ backgroundColor: '#01b1ec' }} variant="contained">Google Sign In</Button>
 
