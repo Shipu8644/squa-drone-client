@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 import { Box } from '@mui/system';
+import axios from 'axios';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -36,20 +37,31 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
-    const [status, setStatus] = React.useState('pending');
+    const [status, setStatus] = React.useState('');
+    const [check, setCheck] = useState(false);
     useEffect(() => {
         fetch("http://localhost:5000/orders")
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [])
+    }, [check, orders])
 
 
     const handleChange = e => {
         setStatus(e.target.value);
-        console.log(status);
     }
     const manageStatus = (id) => {
-        console.log(id, status);
+        setCheck(!check);
+        const order = {
+            status
+        }
+        axios.put(`http://localhost:5000/orders/${id}`, order)
+            .then(res => {
+                console.log(res.data);
+                // if (res.data.modifiedCount > 0) {
+                //     alert('Status updated Successfully')
+                // }
+            })
+
     }
 
     const handleDelete = (id) => {
@@ -102,12 +114,19 @@ const ManageAllOrders = () => {
                                         <FormControl fullWidth>
                                             <NativeSelect
                                                 onClick={() => manageStatus(row._id)}
-                                                defaultValue={status}
+                                                defaultValue={row.status}
                                                 onChange={handleChange}
+                                                style={{
+                                                    color: (
+                                                        (row.status === 'pending' && 'blue') ||
+                                                        (row.status === 'rejected' && 'red') ||
+                                                        (row.status === 'shipped' && 'green')
+                                                    )
+                                                }}
                                             >
-                                                <option value="Pending">Pending</option>
-                                                <option value="Rejected">rejected</option>
-                                                <option value="Shipped">shipped</option>
+                                                <option value="pending">pending</option>
+                                                <option value="rejected">rejected</option>
+                                                <option value="shipped">shipped</option>
                                             </NativeSelect>
                                         </FormControl>
                                     </Box>

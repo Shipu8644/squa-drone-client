@@ -15,7 +15,7 @@ const ExploreServices = () => {
         <div>
             <Navbar></Navbar>
             {services.length ? <Container sx={{ flexGrow: 1, my: 3 }}>
-                <Typography sx={{ my: 3, fontWeight: 'bold' }} variant='h4'> All Products</Typography>
+                <Typography sx={{ fontFamily: 'monospace', fontWeight: 'bold' }} variant="h4">All Products </Typography>
                 <Grid container spacing={3}>
                     {services.map(service => <ExploreService
                         key={service._id}
