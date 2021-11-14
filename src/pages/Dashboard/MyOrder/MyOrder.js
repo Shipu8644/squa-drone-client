@@ -2,8 +2,9 @@ import { Card, CardContent, CardMedia, Grid, Tooltip, Typography } from '@mui/ma
 import { Box } from '@mui/system';
 import React from 'react';
 import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
-const MyOrder = ({ orders }) => {
-    const { serviceName, price, img, status, date } = orders;
+const MyOrder = ({ orders, handleDelete }) => {
+
+    const { serviceName, price, img, status, date, _id } = orders;
 
     return (
         <Grid item xs={12} md={6} lg={4}>
@@ -30,13 +31,14 @@ const MyOrder = ({ orders }) => {
                         <Typography variant="body1" color="text.secondary" component="div">
                             Order Date:  {date}
                         </Typography>
-                        <Tooltip title="Delete">
-                            <AutoDeleteIcon sx={{
-                                cursor: 'pointer',
-                                mt: 1,
-                                color: "red",
+                        <Tooltip onClick={() => handleDelete(_id, status)} title="Delete">
+                            <AutoDeleteIcon
+                                sx={{
+                                    cursor: 'pointer',
+                                    mt: 1,
+                                    color: "red",
 
-                            }}></AutoDeleteIcon>
+                                }}></AutoDeleteIcon>
                         </Tooltip>
                     </CardContent>
 

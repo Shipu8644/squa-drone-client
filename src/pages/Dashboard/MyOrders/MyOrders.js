@@ -1,18 +1,41 @@
 import { Alert, AlertTitle, Button, Container, Grid, Typography } from '@mui/material';
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import MyOrder from '../MyOrder/MyOrder';
+import { useHistory } from 'react-router-dom'
 
 const MyOrders = () => {
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
-
     useEffect(() => {
         fetch(`http://localhost:5000/myOrders?email=${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [user.email])
+
+
+    const handleDelete = (id, status) => {
+        console.log(id, status);
+        if (status === 'shipped') {
+            alert(`Sorry ${user.displayName} The order is already shipped, you can't delete this order now!`)
+        }
+        else {
+            const proceed = window.confirm("Are you sure to cancel this order?")
+            proceed &&
+                fetch(`http://localhost:5000/orders/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            const remainingOrders = orders.filter(order => order._id !== id);
+                            setOrders(remainingOrders);
+                        }
+                    })
+        }
+    }
 
     return (
         <Container>
@@ -21,6 +44,7 @@ const MyOrders = () => {
                 {orders.map(orders => <MyOrder
                     key={orders._id}
                     orders={orders}
+                    handleDelete={handleDelete}
                 ></MyOrder>)
                 }
             </Grid>
