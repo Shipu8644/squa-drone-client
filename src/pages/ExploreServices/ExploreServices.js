@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import ExploreService from '../ExploreService/ExploreService';
 import Navbar from '../Shared/Navigation/Navbar/Navbar';
 import CircularProgress from '@mui/material/CircularProgress';
+import Footer from '../Shared/Footer/Footer';
 const ExploreServices = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://morning-retreat-56331.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -22,10 +23,13 @@ const ExploreServices = () => {
                         service={service}
                     ></ExploreService>)}
                 </Grid>
+
             </Container>
+
                 :
                 <CircularProgress />
             }
+            <Footer></Footer>
         </div>
     );
 };

@@ -18,7 +18,7 @@ const AddProduct = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/services', product)
+        axios.post('https://morning-retreat-56331.herokuapp.com/services', product)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {

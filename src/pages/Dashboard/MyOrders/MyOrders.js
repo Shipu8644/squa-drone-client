@@ -10,7 +10,7 @@ const MyOrders = () => {
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/myOrders?email=${user.email}`)
+        fetch(`https://morning-retreat-56331.herokuapp.com/myOrders?email=${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [user.email])
@@ -24,7 +24,7 @@ const MyOrders = () => {
         else {
             const proceed = window.confirm("Are you sure to cancel this order?")
             proceed &&
-                fetch(`http://localhost:5000/orders/${id}`, {
+                fetch(`https://morning-retreat-56331.herokuapp.com/orders/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

@@ -10,6 +10,8 @@ import {
 import { Link } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import MenuIcon from '@mui/icons-material/Menu';
+import useAuth from "../../../../hooks/useAuth";
+import { Box } from "@mui/system";
 
 const useStyles = makeStyles(() => ({
     link: {
@@ -23,6 +25,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 function DrawerComponent() {
+    const { user, logout } = useAuth();
     const classes = useStyles();
     const [openDrawer, setOpenDrawer] = useState(false);
     return (
@@ -40,14 +43,27 @@ function DrawerComponent() {
                     <Divider />
                     <ListItem onClick={() => setOpenDrawer(false)}>
                         <ListItemText>
-                            <Link to="/explore-services" className={classes.link}>Explore Services</Link>
+                            <Link to="/explore-services" className={classes.link}>Explore Products</Link>
                         </ListItemText>
                     </ListItem>
                     <Divider />
                     <ListItem onClick={() => setOpenDrawer(false)}>
                         <ListItemText>
-                            <Link to="/login" className={classes.link}>Login</Link>
+                            <Link to="/dashboard" className={classes.link}>Dashboard</Link>
                         </ListItemText>
+                    </ListItem>
+                    <Divider />
+
+                    <ListItem onClick={() => setOpenDrawer(false)}>
+                        {!user.email ? <ListItemText>
+                            <Link to="/login" className={classes.link}>Login</Link>
+                        </ListItemText> :
+
+                            <ListItemText>
+                                <Link onClick={logout} to="/login" className={classes.link}>Logout</Link>
+                            </ListItemText>
+                        }
+
                     </ListItem>
                     <Divider />
 

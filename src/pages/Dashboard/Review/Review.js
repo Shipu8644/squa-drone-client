@@ -37,7 +37,7 @@ const Review = () => {
             rating: rating
         }
 
-        axios.post('http://localhost:5000/reviews', reviews)
+        axios.post('https://morning-retreat-56331.herokuapp.com/reviews', reviews)
             .then(res => {
                 if (res.data.insertedId) {
                     setSuccess(true);

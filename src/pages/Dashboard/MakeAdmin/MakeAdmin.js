@@ -15,7 +15,7 @@ const MakeAdmin = () => {
         const user = {
             email
         }
-        axios.put('http://localhost:5000/users/admin', user)
+        axios.put('https://morning-retreat-56331.herokuapp.com/users/admin', user)
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     setSuccess(true);

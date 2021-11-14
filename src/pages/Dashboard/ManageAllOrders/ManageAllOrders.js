@@ -40,7 +40,7 @@ const ManageAllOrders = () => {
     const [status, setStatus] = React.useState('');
     const [check, setCheck] = useState(false);
     useEffect(() => {
-        fetch("http://localhost:5000/orders")
+        fetch("https://morning-retreat-56331.herokuapp.com/orders")
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [check, orders])
@@ -54,7 +54,7 @@ const ManageAllOrders = () => {
         const order = {
             status
         }
-        axios.put(`http://localhost:5000/orders/${id}`, order)
+        axios.put(`https://morning-retreat-56331.herokuapp.com/orders/${id}`, order)
             .then(res => {
                 console.log(res.data);
                 // if (res.data.modifiedCount > 0) {
@@ -67,7 +67,7 @@ const ManageAllOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are You Sure to delete the selected item?")
         if (proceed) {
-            fetch(`http://localhost:5000/orders/${id}`, {
+            fetch(`https://morning-retreat-56331.herokuapp.com/orders/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

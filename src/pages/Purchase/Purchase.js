@@ -16,7 +16,7 @@ const Purchase = () => {
     const [order, setOrder] = useState({});
     const [success, setSuccess] = useState(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${id}`)
+        fetch(`https://morning-retreat-56331.herokuapp.com/services/${id}`)
             .then(res => res.json())
             .then(data => setService(data))
     }, [id])
@@ -43,7 +43,7 @@ const Purchase = () => {
             ...order,
         }
 
-        axios.post("http://localhost:5000/orders", orders)
+        axios.post("https://morning-retreat-56331.herokuapp.com/orders", orders)
             .then(res => {
                 if (res.data.insertedId) {
                     setSuccess(true)
