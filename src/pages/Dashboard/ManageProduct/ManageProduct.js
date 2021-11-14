@@ -26,8 +26,8 @@ const ExpandMore = styled((props) => {
         duration: theme.transitions.duration.shortest,
     }),
 }));
-const ManageProduct = ({ product }) => {
-    const { name, img, description, price } = product;
+const ManageProduct = ({ product, handleDelete }) => {
+    const { name, img, description, price, _id } = product;
     const [expanded, setExpanded] = React.useState(false);
     const date = new Date();
     const handleExpandClick = () => {
@@ -43,7 +43,7 @@ const ManageProduct = ({ product }) => {
                         </Avatar>
                     }
                     action={
-                        <Tooltip title="Delete">
+                        <Tooltip onClick={() => handleDelete(_id)} title="Delete">
                             <IconButton sx={{ color: red[500] }} aria-label="settings">
                                 <DeleteForeverIcon sx={{ fontSize: '40px' }} />
                             </IconButton>
