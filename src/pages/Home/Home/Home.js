@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navigation/Navbar/Navbar';
 import Banner from '../Banner/Banner';
 import ContactForm from '../ContactForm/ContactForm';
@@ -13,6 +14,7 @@ const Home = () => {
             <Services></Services>
             <Reviews></Reviews>
             <ContactForm></ContactForm>
+            <Footer></Footer>
 
         </div>
     );
