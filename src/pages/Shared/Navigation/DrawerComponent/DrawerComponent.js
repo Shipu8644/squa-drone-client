@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+    Button,
     Divider,
     Drawer,
     IconButton,
@@ -60,7 +61,7 @@ function DrawerComponent() {
                         </ListItemText> :
 
                             <ListItemText>
-                                <Link onClick={logout} to="/login" className={classes.link}>Logout</Link>
+                                <Button onClick={logout} className={classes.link}>Logout</Button>
                             </ListItemText>
                         }
 

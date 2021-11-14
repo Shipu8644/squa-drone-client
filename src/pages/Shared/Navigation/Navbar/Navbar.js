@@ -87,9 +87,9 @@ function Navbar() {
                             Login
                         </NavLink> :
                             <Box>
-                                <NavLink onClick={logout} to="/login" style={{ backgroundColor: '#01b1ec', color: 'white', padding: "2px 40px", borderRadius: "5px" }} className={classes.link}>
+                                <Button onClick={logout} style={{ backgroundColor: '#01b1ec', color: 'white', marginLeft: "20px", padding: "2px 40px", borderRadius: "5px" }} className={classes.link}>
                                     Logout
-                                </NavLink>
+                                </Button>
                                 <span style={{ color: 'red', marginLeft: '5px' }} >Sign in as: {user.displayName}</span>
                             </Box>
 
