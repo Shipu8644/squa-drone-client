@@ -4,6 +4,7 @@ import ExploreService from '../ExploreService/ExploreService';
 import Navbar from '../Shared/Navigation/Navbar/Navbar';
 import CircularProgress from '@mui/material/CircularProgress';
 import Footer from '../Shared/Footer/Footer';
+import Banner from '../Home/Banner/Banner';
 const ExploreServices = () => {
     const [services, setServices] = useState([]);
 
@@ -15,6 +16,7 @@ const ExploreServices = () => {
     return (
         <div>
             <Navbar></Navbar>
+            <Banner></Banner>
             {services.length ? <Container sx={{ flexGrow: 1, my: 3 }}>
                 <Typography sx={{ fontFamily: 'monospace', fontWeight: 'bold' }} variant="h4">All Products </Typography>
                 <Grid container spacing={3}>

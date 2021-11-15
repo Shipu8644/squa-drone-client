@@ -69,7 +69,7 @@ function Dashboard(props) {
                 {/* Common for Admin and users */}
                 <NavLink style={{ textDecoration: 'none' }} to="/explore-services" >
                     <ExploreIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></ExploreIcon>
-                    <Button sx={{ mt: -4 }} variant="text"> Explore Products</Button>
+                    <Button sx={{}} variant="text"> Explore Products</Button>
                 </NavLink>
                 <br />
                 <NavLink activeStyle={{
@@ -77,7 +77,7 @@ function Dashboard(props) {
                     color: "red"
                 }} style={{ textDecoration: 'none' }} to={`${url}`} >
                     <AdminPanelSettingsIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></AdminPanelSettingsIcon>
-                    <Button sx={{ mt: -4 }} variant="text"> Dashboard</Button>
+                    <Button sx={{}} variant="text"> Dashboard</Button>
                 </NavLink>
                 <br />
 
@@ -89,19 +89,19 @@ function Dashboard(props) {
                         color: "red"
                     }} style={{ textDecoration: 'none' }} to={`${url}/myOrders`} >
                         <BookIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></BookIcon>
-                        <Button sx={{ mt: -4 }} variant="text">My Orders</Button>
+                        <Button sx={{}} variant="text">My Orders</Button>
                     </NavLink>
                     <br />
 
                     <NavLink style={{ textDecoration: 'none' }} to={`${url}/addReview`} >
                         <AddCommentIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></AddCommentIcon>
-                        <Button sx={{ mt: -4 }} variant="text">Add Review</Button>
+                        <Button sx={{}} variant="text">Add Review</Button>
                     </NavLink>
                     <br />
 
                     <NavLink style={{ textDecoration: 'none' }} to={`${url}/payOrder`} >
                         <PaymentsIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></PaymentsIcon>
-                        <Button sx={{ mt: -4 }} variant="text"> Pay Order</Button>
+                        <Button sx={{}} variant="text"> Pay Order</Button>
                     </NavLink>
                     <br />
                 </Box>}
@@ -110,31 +110,31 @@ function Dashboard(props) {
                 {admin && <Box>
                     <NavLink style={{ textDecoration: 'none' }} to={`${url}/manageOrders`} >
                         <ManageAccountsIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></ManageAccountsIcon>
-                        <Button sx={{ mt: -4 }} variant="text"> Manage Orders</Button>
+                        <Button sx={{}} variant="text"> Manage Orders</Button>
                     </NavLink>
                     <br />
 
                     <NavLink style={{ textDecoration: 'none' }} to={`${url}/addProduct`} >
                         <AddIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></AddIcon>
-                        <Button sx={{ mt: -4 }} variant="text">Add Product</Button>
+                        <Button sx={{}} variant="text">Add Product</Button>
                     </NavLink>
                     <br />
 
                     <NavLink style={{ textDecoration: 'none' }} to={`${url}/manageProducts`} >
                         <ProductionQuantityLimitsIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></ProductionQuantityLimitsIcon>
-                        <Button sx={{ mt: -4 }} variant="text">Manage Products</Button>
+                        <Button sx={{}} variant="text">Manage Products</Button>
                     </NavLink>
                     <br />
                     <NavLink style={{ textDecoration: 'none' }} to={`${url}/makeAdmin`} >
                         <AdminPanelSettingsTwoToneIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></AdminPanelSettingsTwoToneIcon>
-                        <Button sx={{ mt: -4 }} variant="text">Make Admin</Button>
+                        <Button sx={{}} variant="text">Make Admin</Button>
                     </NavLink>
                     <br />
                 </Box>}
 
                 <NavLink onClick={logout} to='/' style={{ textDecoration: 'none' }}  >
                     <ExitToAppIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></ExitToAppIcon>
-                    <Button sx={{ mt: -4 }} variant="text"> Logout</Button>
+                    <Button sx={{}} variant="text"> Logout</Button>
                 </NavLink>
             </Box>
 

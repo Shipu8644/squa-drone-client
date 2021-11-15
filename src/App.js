@@ -1,5 +1,6 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthProvider from './contexts/AuthProvider';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import ExploreServices from './pages/ExploreServices/ExploreServices';
@@ -9,6 +10,7 @@ import PrivateRoute from './pages/Login/PriivateRoute/PrivateRoute';
 import Registration from './pages/Login/Registration/Registration';
 import NotFound from './pages/NotFound/NotFound';
 import Purchase from './pages/Purchase/Purchase';
+
 
 function App() {
   return (
