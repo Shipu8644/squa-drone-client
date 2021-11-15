@@ -132,10 +132,10 @@ function Dashboard(props) {
                     <br />
                 </Box>}
 
-                <NavLink onClick={logout} style={{ textDecoration: 'none' }} to="/login" >
+                <Button onClick={logout} style={{ textDecoration: 'none' }}  >
                     <ExitToAppIcon sx={{ fontSize: '40px', color: '#01b1ec' }}></ExitToAppIcon>
-                    <Button sx={{ mt: -4 }} variant="text"> Logout</Button>
-                </NavLink>
+                    <Button sx={{}} variant="text"> Logout</Button>
+                </Button>
             </Box>
 
 
