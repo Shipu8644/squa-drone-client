@@ -1,4 +1,4 @@
-import { Container, FormControl, Grid, InputLabel, MenuItem, NativeSelect, Select, Tooltip, Typography } from '@mui/material';
+import { Button, Container, FormControl, Grid, InputLabel, MenuItem, NativeSelect, Select, Tooltip, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import './ManageAllOrders.css';
 import { styled } from '@mui/material/styles';
@@ -46,8 +46,9 @@ const ManageAllOrders = () => {
     }, [check, orders])
 
 
-    const handleChange = e => {
+    const handleChange = (e, id) => {
         setStatus(e.target.value);
+
     }
     const manageStatus = (id) => {
         setCheck(!check);
@@ -57,9 +58,9 @@ const ManageAllOrders = () => {
         axios.put(`https://morning-retreat-56331.herokuapp.com/orders/${id}`, order)
             .then(res => {
                 console.log(res.data);
-                // if (res.data.modifiedCount > 0) {
-                //     alert('Status updated Successfully')
-                // }
+                if (res.data.modifiedCount > 0) {
+                    alert('Status updated Successfully')
+                }
             })
 
     }
@@ -96,6 +97,7 @@ const ManageAllOrders = () => {
                             <StyledTableCell align="left">Date</StyledTableCell>
                             <StyledTableCell align="left">Status</StyledTableCell>
                             <StyledTableCell align="left">Action </StyledTableCell>
+                            <StyledTableCell align="left">Save changes </StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -113,7 +115,6 @@ const ManageAllOrders = () => {
                                     <Box sx={{ minWidth: 120 }}>
                                         <FormControl fullWidth>
                                             <NativeSelect
-                                                onClick={() => manageStatus(row._id)}
                                                 defaultValue={row.status}
                                                 onChange={handleChange}
                                                 style={{
@@ -141,6 +142,9 @@ const ManageAllOrders = () => {
 
                                         }}></BackspaceIcon>
                                     </Tooltip>
+                                </StyledTableCell>
+                                <StyledTableCell align="left">
+                                    <Button onClick={() => manageStatus(row._id)} variant="outlined">Save</Button>
                                 </StyledTableCell>
 
                             </StyledTableRow>
