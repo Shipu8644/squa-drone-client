@@ -4,8 +4,12 @@ import d1 from '../../../images/d1.jpg';
 import d2 from '../../../images/d2.jpg';
 import d3 from '../../../images/d3.jpg'
 const CarouselBanner = () => {
+
+    const labelColor = {
+        color: 'red'
+    }
     return (
-        <div className=''>
+        <div >
             <Carousel variant="dark">
                 <Carousel.Item>
                     <img
@@ -15,8 +19,8 @@ const CarouselBanner = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h3 style={labelColor}>Welcome to SquaDrone</h3>
+                        {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -28,8 +32,8 @@ const CarouselBanner = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3 style={labelColor}>Welcome to SquaDrone</h3>
+                        {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -41,8 +45,8 @@ const CarouselBanner = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        <h3 style={labelColor}>Welcome to SquaDrone</h3>
+                        {/* <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

@@ -9,6 +9,7 @@ const Login = () => {
     const location = useLocation();
     const history = useHistory();
     const { loginUser, signinWithGoogle, user, isLoading, authError } = useAuth();
+
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -17,6 +18,7 @@ const Login = () => {
         setLoginData(newLoginData);
 
     }
+
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();

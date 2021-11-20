@@ -12,7 +12,7 @@ const Footer = () => {
                     <Col xs={12} md={4}>
                         <div className='footer-section'>
                             <img className='img-fluid' style={{ height: '60px', borderRadius: "5px" }} src={logo} alt="" />
-                            <p className="p-2">Latest all brand new cars available here. Call for more information 357-257-2021 available 24/7.</p>
+                            <p className="p-2">Latest all brand new drones available here. Call for more information 357-257-2021 available 24/7.</p>
                         </div>
                     </Col>
                     <Col xs={12} md={4}>
