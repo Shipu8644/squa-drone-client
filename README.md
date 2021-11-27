@@ -17,7 +17,7 @@ Live site link of [SquaDrone](https://squa-drone.web.app/).
 * Users can give their review by selecting rating and their valuable comment about the website. This rating and comment will be shown on the home page.
 * There are different routes available  for Admin in the Dashboard.
 * Admin can manage all the orders by observing all the users who have ordered, can cancel any orders. Admin has the access to change  the status of the order in 3 modes: pending, rejected and shipped.
-* Admin can add new product easily.
+* Admin can add a new product easily. Admin has the power to make a new admin from any of the users.
 * Admin can see all the users who who have registered. If any users are responsible for the violation of rules, he/she will be removed from the website permanently by the Admin.
 * Front-end and Back-end Development using
 Reactjs, Nodejs, MongoDb and Firebase authentication system used for registration and login.
