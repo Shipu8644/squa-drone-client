@@ -18,6 +18,7 @@ const useFirebase = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setAuthError('');
+                alert('registration successfull, Welcome to SquaDrone')
                 const newUser = { email, displayName: name }
 
                 setUser(newUser)
